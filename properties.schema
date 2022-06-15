@@ -1,0 +1,46 @@
+{
+	"type": "object",
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"id": "http://jsonschema.net",
+	"required": false,
+	"globals": {},
+	"properties": {
+		"pluginLocations": {
+			"type": "object",
+			"required": true,
+			"properties": {
+				"course": {
+					"type": "object",
+					"properties": {
+						"_notifyLinks": {
+							"type": "object",
+							"required": false,
+							"legend": "Notify links",
+							"properties": {
+								"_isEnabled": {
+									"type": "boolean",
+									"required": true,
+									"default": false,
+									"title": "Is enabled",
+									"inputType": "Checkbox",
+									"validators": [],
+									"help": "Enable or disable the notify links"
+								},
+								"_selector": {
+									"type": "string",
+									"required": false,
+									"default": "a.notify-link",
+									"title": "Selector",
+									"inputType": "Text",
+									"validators": [],
+									"help": "Default selector for notify links",
+									"translatable": false
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

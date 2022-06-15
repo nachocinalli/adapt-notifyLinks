@@ -1,0 +1,7 @@
+//course.json
+{
+  "_notifyLinks": {
+    "_isEnabled": true,
+    "_selector": "a.notify-link"
+  }
+}

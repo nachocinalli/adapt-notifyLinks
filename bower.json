@@ -1,0 +1,19 @@
+{
+  "name": "adapt-notifyLinks",
+  "version": "1.0.0",
+  "framework": ">=5.17.7",
+  "description": "An extension to allow a learner to click on a link to open an adapt model in a notify popup",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nachocinalli/adapt-notifyLinks.git"
+  },
+  "main": "/js/adapt-notifyLinks.js",
+  "displayName": "Notify Links",
+  "extension": "notifyLinks",
+  "keywords": ["adapt-plugin", "adapt-extension"],
+  "authors": ["Nacho Cinalli <nachocinalli@gmail.com>"],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/nachocinalli/adapt-notifyLinks",
+  "issues": "https://github.com/nachocinalli/adapt-notifyLinks/issues/",
+  "targetAttribute": "_notifyLinks"
+}

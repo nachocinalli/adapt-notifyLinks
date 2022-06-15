@@ -1,9 +1,8 @@
 # adapt-notifyLinks  
 
-**notifyLinks** 
+**notifyLinks** is an *extension* to allow a learner to click on a link to open an adapt model in a notify popup.
 
-## Limitations
- 
+You can see it [here](https://adaptlearning-no-core.web.app/#/id/eo-35)
 
 ----------------------------
 **Version number:**  1.0.0  
