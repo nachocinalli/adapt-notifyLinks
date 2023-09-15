@@ -1,7 +1,22 @@
-//course.json
-{
-  "_notifyLinks": {
-    "_isEnabled": true,
-    "_selector": "a.notify-link"
+[
+  {
+    "_comment": "Add to course.json",
+    "_notifyLinks": {
+      "_isEnabled": true,
+      "_selector": "a.notify-link"
+    }
+  },
+
+  {
+    "_comment": "Add to blocks.json",
+    "_notifyLinks": {
+      "_name": "block-unique-name"
+    }
+  },
+  {
+    "_comment": "Add to components.json",
+    "_notifyLinks": {
+      "_name": "component-unique-name"
+    }
   }
-}
+]
