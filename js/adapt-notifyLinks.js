@@ -1,7 +1,6 @@
 import Adapt from 'core/js/adapt';
 import data from 'core/js/data';
 import components from 'core/js/components';
-import logging from 'core/js/logging';
 import notify from 'core/js/notify';
 class NotifyLinks extends Backbone.Controller {
   initialize() {
@@ -30,9 +29,7 @@ class NotifyLinks extends Backbone.Controller {
     event.preventDefault();
     const href = $(event.currentTarget).attr('href');
     const startsWith = '#/id/';
-    const modelIdStr = href.startsWith(startsWith)
-      ? href.replace(startsWith, '')
-      : href.replace(/^#/, '');
+    const modelIdStr = href.startsWith(startsWith) ? href.replace(startsWith, '') : href.replace(/^#/, '');
     this.navigateTo(modelIdStr);
   }
 
@@ -42,25 +39,36 @@ class NotifyLinks extends Backbone.Controller {
     $(_selector).off('click', this.handleClick.bind(this));
   }
 
+  findNotifyLinks(collection, modelId) {
+    return collection.findWhere((model) => {
+      return model.get('_notifyLinks') && model.get('_notifyLinks')._name === modelId;
+    });
+  }
+
   navigateTo(modelId) {
-    const model = data.findById(modelId);
+    let model = data.findById(modelId);
+    if (!model) {
+      model = this.findNotifyLinks(Adapt.blocks, modelId);
+      if (!model) {
+        model = this.findNotifyLinks(Adapt.components, modelId);
+      }
+    }
+    if (!model) {
+      console.log('notifyLinks: model not found', modelId);
+      return;
+    }
+    model.set('_isRendered', true);
     const View = components.getViewClass(model);
     const view = new View({ model });
 
-    _.defer(async () => {
-      try {
-        await notify.popup({
-          _view: view,
-          _attributes: { 'data-adapt-id': modelId },
-          _type: 'popup',
-          _isCancellable: true,
-          _showCloseButton: true,
-          _closeOnBackdrop: true,
-          _classes: 'notifylinks'
-        });
-      } catch (err) {
-        logging.warn(`Notify links cannot show model id: ${modelId}\n`, err);
-      }
+    notify.popup({
+      _view: view,
+      _attributes: { 'data-adapt-id': modelId },
+      _type: 'popup',
+      _isCancellable: true,
+      _showCloseButton: true,
+      _closeOnBackdrop: true,
+      _classes: 'notifylinks'
     });
   }
 
