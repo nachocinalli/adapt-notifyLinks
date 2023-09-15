@@ -1,6 +1,6 @@
 {
   "name": "adapt-notifyLinks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "framework": ">=5.17.7",
   "description": "An extension to allow a learner to click on a link to open an adapt model in a notify popup",
   "repository": {
